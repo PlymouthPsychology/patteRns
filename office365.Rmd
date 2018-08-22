@@ -7,7 +7,17 @@ library(tidyverse)
 ```
 
 
-## Data which is not sensitive and for which you can create a 'public' URL
+# Office 365
+
+
+Sometimes it's useful to read data directly from Office365 into R for processing and analysis. Below are some examples:
+ 
+ 
+
+
+## Excel
+
+### Data which is not sensitive and for which you can create a 'public' URL
 
 Reading data directly from office 365 is possible.
 
