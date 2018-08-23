@@ -17,7 +17,7 @@ Sometimes it's useful to read data directly from Office365 into R for processing
 
 ## Excel
 
-### Data which is not sensitive and for which you can create a 'public' URL
+### CSV data which is not sensitive and for which you can create a 'public' URL
 
 Reading data directly from office 365 is possible.
 
@@ -36,3 +36,26 @@ Reading data directly from office 365 is possible.
 ttdata <- read_csv('https://liveplymouthac-my.sharepoint.com/:x:/g/personal/ben_whalley_plymouth_ac_uk/EVDlZFp7S_1DgbRq6kNhGqsBlsHP_1ReFyMuIaZCujvCMw?e=xy0rQj&download=1')
 ttdata %>% glimpse()
 ```
+
+
+### Xlsx files
+
+These need to be read via a tempfile:
+
+
+```{r}
+request <- httr::GET('https://liveplymouthac-my.sharepoint.com/:x:/g/personal/ben_whalley_plymouth_ac_uk/EbyfYkWebANJnkoQkcgbYA0BolLMumo2w9ls6VBEeRH8VQ?e=wKyJNv&download=1')
+
+tmp <- tempfile()
+writeBin(request$content, con = tmp)
+heights <- readxl::read_excel(tmp)
+heights
+```
+
+
+
+
+
+
+
+
